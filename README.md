@@ -5,7 +5,7 @@
 ### **Instalación**
 
 ```bash
-$ python -m pip install git+http://get.pycheck.es
+$ pip install git+http://get.pycheck.es
 ```
 
 Es necesario tener instalado git: [¿Cómo instalar git?](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Instalaci%C3%B3n-de-Git) Si no funciona con `python` prueba con `python3`
