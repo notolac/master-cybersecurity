@@ -1,143 +1,98 @@
-# Clases Python 2024
+# Máster en Ciberseguridad
 
-**pycheck** es un comprobador de ejercicios escritos en Python.
+Este repositorio contiene materiales y prácticas para el Máster en Ciberseguridad.
 
-### **Instalación**
+## Configuración del Entorno
 
-```bash
-$ pip install git+http://get.pycheck.es
-```
+Para asegurar la correcta ejecución del código, se recomienda configurar el entorno de desarrollo utilizando **Python 3.12.3** con **pyenv** y gestionar las dependencias con **uv**.
 
-Es necesario tener instalado git: [¿Cómo instalar git?](https://git-scm.com/book/es/v2/Inicio---Sobre-el-Control-de-Versiones-Instalaci%C3%B3n-de-Git) Si no funciona con `python` prueba con `python3`
+### 1. Instalación de pyenv
 
-Si todo ha ido bien, deberías poder ejecutar la herramienta de la siguiente manera:
+Si no tienes **pyenv** instalado, puedes hacerlo siguiendo las instrucciones de la [documentación oficial](https://github.com/pyenv/pyenv#installation). Una vez instalado, asegúrate de reiniciar tu terminal y ejecutar:
 
 ```bash
-$ pycheck
+pyenv install 3.12.3
+pyenv local 3.12.3
 ```
 
-Asegúrate de que se localizan los ejecutables: [¿Cómo configurar el PATH?](https://realpython.com/add-python-to-path/)
+Esto establecerá la versión **Python 3.12.3** a nivel local en este directorio.
 
-### **Versión**
+### 2. Instalación de pipx
+
+Si no tienes **pipx**, instálalo con:
 
 ```bash
-$ pycheck --version
+python -m pip install --user pipx
+python -m pipx ensurepath
 ```
 
-### **Actualización**
+Luego, reinicia tu terminal para que los cambios en el PATH surtan efecto.
+
+### 3. Instalación de uv
+
+Para gestionar paquetes, utilizaremos **uv** en lugar de pip. Instálalo usando **pipx**:
 
 ```bash
-$ pycheck update
+pipx install uv
 ```
 
-### **Documentación**
+### 4. Instalación de dependencias
 
-Permite abrir la documentación del proyecto directamente en un navegador web:
+Si ya tienes un archivo `requirements.txt` o `pyproject.toml`, puedes instalar las dependencias con:
 
 ```bash
-$ pycheck docs
+uv venv
+uv pip install -r requirements.txt  # Si usas requirements.txt
+uv pip install .  # Si usas pyproject.toml
 ```
 
-### **Enunciado**
+### 5. Verificación de instalación
 
-Cada ejercicio tiene un **identificador** asociado. Una vez que lo sepamos podremos realizar una serie de acciones sobre el mismo. Supongamos que vamos a trabajar con un ejercicio cuyo identificador es `sum`.
-
-Para ver el enunciado del ejercicio ejecutamos lo siguiente:
+Para asegurarte de que todo está correctamente configurado, ejecuta:
 
 ```bash
-$ pycheck show sum
+python --version  # Debería mostrar Python 3.12.3
+uv --version      # Debería mostrar la versión instalada de uv
 ```
 
-![https://pycheck.es/static/docs/images/pycheck-show.png](https://pycheck.es/static/docs/images/pycheck-show.png)
+### 6. Uso de uv
 
-Esto nos muestra:
-
-1. Un **título** del ejercicio. *En el encabezado del marco*.
-2. Una **descripción** del ejercicio: *Texto Markdown*.
-3. Una lista de **casos de comprobación**. *Los casos de comprobación están numerados `#` y se puede hacer referencia a ellos de manera individual*.
-
-### **Plantilla**
-
-Para empezar a trabajar necesitamos la plantilla del ejercicio. La podemos generar de la siguiente manera:
+Para agregar paquetes nuevos al entorno:
 
 ```bash
-$ pycheck template sum
+uv pip install nombre-del-paquete
 ```
 
-Esto generará un fichero `sum.py` en la carpeta de trabajo con el siguiente contenido:
+Para listar los paquetes instalados:
 
 ```bash
-# ********************
-# LA SUMA MÁS SENCILLA
-# ********************
-
-
-def run(a: int, b: int) -> int:
-    result = 'tu código aquí'
-    return result
-
-
-if __name__ == '__main__':
-    run(3, 4)
+uv pip list
 ```
 
-> ℹ️ Nuestro código debe empezar en la línea 7.
-
-### **Arranque**
-
-Existe una forma de mostrar la descripción del ejercicio y crear la plantilla, todo de una vez. Para ello usamos el siguiente comando de "arranque":
+Para eliminar un paquete:
 
 ```bash
-$ pycheck boot sum
+uv pip uninstall nombre-del-paquete
 ```
 
-### **Comprobación**
+### 7. Actualización del entorno
 
-Una vez que hayamos escrito nuestro código sobre la plantilla `sum.py` podemos ver si supera los casos de comprobación. Para ello hacemos:
+Si deseas actualizar las dependencias a sus versiones más recientes:
 
 ```bash
-$ pycheck check sum
+uv pip freeze > requirements.txt  # Guarda las versiones actuales
+uv pip install -U -r requirements.txt
 ```
 
-Resultado erróneo:
+### 8. Eliminación del entorno virtual
 
-![https://pycheck.es/static/docs/images/pycheck-check1.png](https://pycheck.es/static/docs/images/pycheck-check1.png)
-
-Resultado correcto:
-
-![https://pycheck.es/static/docs/images/pycheck-check2.png](https://pycheck.es/static/docs/images/pycheck-check2.png)
-
-Es posible lanzar un único caso de comprobación. Supongamos que sólo queremos comprobar el caso número 1:
+Si deseas reiniciar el entorno desde cero:
 
 ```bash
-$ pycheck check -n1 sum
+uv venv clear
 ```
 
-Esta opción es muy interesante para poder depurar nuestro código.
+---
 
-### **Ejecución**
+Con esta configuración, puedes mantener un entorno limpio y reproducible para tus prácticas en el Máster en Ciberseguridad.
 
-Si queremos ejecutar el ejercicio con argumentos propios, podemos hacerlo pasando dichos argumentos desde línea de comandos:
-
-```bash
-$ pycheck run sum 1 9
-10
-```
-
-Es muy importante tener en cuenta que, en la mayoría de situaciones, los argumentos por línea de comandos deben pasarse entrecomillados:
-
-```bash
-$ pycheck run sum 1 9
-$ pycheck run sum "1" "9"$ pycheck run sum -- 1 -1  # Usar -- para números negativos$ pycheck run sum 3.21 4.56
-
-$ pycheck run sum hola mundo  # 2 argumentos distintos$ pycheck run sum "Hola mundo"  # Un único argumento
-$ pycheck run sum True
-$ pycheck run sum "True"
-$ pycheck run sum "[1, 2, 3]"  # listas$ pycheck run sum "{'a': 1, 'b': 2}"  # diccionarios
-```
-
-La documentacion compartida en este repo fue creada por Sergio Delgado Quintero y esta publicada en:
-[pycheck.es](https://pycheck.es/)
-
-Formando parte del curso:
-[aprendepython.es](https://aprendepython.es/)
