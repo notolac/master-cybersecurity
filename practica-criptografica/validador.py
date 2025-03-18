@@ -2,6 +2,7 @@
 import csv
 import hashlib
 import time
+import os
 from rich.console import Console
 from rich.prompt import Prompt
 
@@ -27,6 +28,16 @@ def search_hash_in_csv(hash_to_find: str, csv_file: str = "passwords.csv") -> st
         return None
     return None
 
+def append_to_csv(password: str, hash_value: str, csv_file: str = "passwords.csv"):
+    """Agrega una nueva fila con la contraseña y su hash al CSV. Si el archivo no existe, lo crea con encabezados."""
+    file_exists = os.path.exists(csv_file)
+    mode = "a" if file_exists else "w"
+    with open(csv_file, mode, newline="", encoding="utf-8") as csvfile:
+        writer = csv.writer(csvfile)
+        if not file_exists:
+            writer.writerow(["password", "hash"])
+        writer.writerow([password, hash_value])
+
 def main():
     # Solicitar la contraseña al usuario
     password = Prompt.ask("Ingrese la contraseña para generar su hash")
@@ -51,7 +62,9 @@ def main():
         console.print(f"[bold green]Hash encontrado![/bold green] La contraseña correspondiente es: [bold yellow]{password_found}[/bold yellow]")
         console.print(f"Tiempo de búsqueda: [bold cyan]{elapsed_time:.6f} segundos[/bold cyan]")
     else:
-        console.print("[bold red]Hash no encontrado en el archivo CSV.[/bold red]")
+        console.print("[bold red]Hash no encontrado en el archivo CSV. Se agregará una nueva entrada.[/bold red]")
+        append_to_csv(password, hash_result, "passwords.csv")
+        console.print("[bold green]Nueva entrada agregada al archivo CSV.[/bold green]")
 
 if __name__ == "__main__":
     main()
