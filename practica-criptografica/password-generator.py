@@ -2,6 +2,8 @@
 import csv
 import hashlib
 
+TARGET_COUNT = 100000
+
 def generate_variants(base_password: str) -> set[str]:
     """
     Genera variantes de una contraseña base aplicando transformaciones:
@@ -17,22 +19,19 @@ def generate_variants(base_password: str) -> set[str]:
     ]
     prefix_options = [""] + [str(i) for i in range(10)]
     suffix_options = [""] + [str(i) for i in range(10)]
-    # Lista de símbolos especiales para agregar (excluimos el valor vacío en este paso)
     special_options = ["!", "@", "#", "$", "%", "&"]
 
     for transform in transformations:
         for prefix in prefix_options:
             for suffix in suffix_options:
                 base_variant = prefix + transform + suffix
-                # Agregamos la variante sin símbolo
                 variants.add(base_variant)
-                # Agregamos variantes con cada símbolo especial al final
                 for symbol in special_options:
                     variants.add(base_variant + symbol)
     return variants
 
 def main():
-    # Lista de contraseñas comunes (puede ampliarse o modificarse)
+    # Lista de 100 contraseñas base
     base_passwords = [
         "123456", "password", "12345678", "qwerty", "abc123",
         "123456789", "111111", "1234567", "sunshine", "qwerty123",
@@ -57,27 +56,44 @@ def main():
         "starwars", "nintendo", "pokemon", "iloveme", "spongebob"
     ]
     
-    all_variants: set[str] = set()
-    # Se generan variantes a partir de cada contraseña base
+    # Estructuras para almacenar contraseñas de forma ordenada y asegurar unicidad
+    unique_passwords = []
+    seen = set()
+
+    def add_password(pwd: str):
+        if pwd not in seen:
+            seen.add(pwd)
+            unique_passwords.append(pwd)
+
+    # Primero se agregan las contraseñas base en el orden dado
+    for bp in base_passwords:
+        add_password(bp)
+    
+    # Ahora se generan variantes para cada contraseña base hasta alcanzar TARGET_COUNT
     for bp in base_passwords:
         variants = generate_variants(bp)
-        all_variants.update(variants)
-        # Si ya se supera el límite deseado, se detiene la generación
-        if len(all_variants) >= 10000:
+        for variant in variants:
+            add_password(variant)
+            if len(unique_passwords) >= TARGET_COUNT:
+                break
+        if len(unique_passwords) >= TARGET_COUNT:
             break
-    
-    # Seleccionamos las primeras 10,000 variantes
-    password_list = list(all_variants)[:10000]
-    
+
+    # Se recorta la lista en caso de superar el límite deseado
+    if len(unique_passwords) < TARGET_COUNT:
+        print("No se alcanzó el número de contraseñas deseado, se generaron", len(unique_passwords))
+    else:
+        unique_passwords = unique_passwords[:TARGET_COUNT]
+
     # Se crea y escribe el archivo CSV con dos columnas: password y hash
     with open("passwords.csv", "w", newline="", encoding="utf-8") as csvfile:
         writer = csv.writer(csvfile)
         writer.writerow(["password", "hash"])  # Encabezados
-        for pwd in password_list:
+        for pwd in unique_passwords:
             hash_hex = hashlib.sha256(pwd.encode("utf-8")).hexdigest()
             writer.writerow([pwd, hash_hex])
     
-    print(f"Se han generado y cifrado {len(password_list)} contraseñas. Archivo 'passwords.csv' creado.")
+    print(f"Se han generado y cifrado {len(unique_passwords)} contraseñas. Archivo 'passwords.csv' creado.")
 
 if __name__ == "__main__":
     main()
