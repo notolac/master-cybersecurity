@@ -1,92 +1,92 @@
-# Máster en Ciberseguridad
+# Cybersecurity Master
 
-Este repositorio contiene materiales y prácticas para el Máster en Ciberseguridad.
+This repository contains materials and practices for the Cybersecurity Master's program.
 
-## Configuración del Entorno
+## Environment Setup
 
-Para asegurar la correcta ejecución del código, se recomienda configurar el entorno de desarrollo utilizando **Python 3.12.3** con **pyenv** y gestionar las dependencias con **uv**.
+To ensure correct code execution, it is recommended to set up the development environment using **Python 3.12.3** with **pyenv** and manage dependencies with **uv**.
 
-### 1. Instalación de pyenv
+### 1. Pyenv Installation
 
-Si no tienes **pyenv** instalado, puedes hacerlo siguiendo las instrucciones de la [documentación oficial](https://github.com/pyenv/pyenv#installation). Una vez instalado, asegúrate de reiniciar tu terminal y ejecutar:
+If you don't have **pyenv** installed, you can do so by following the instructions in the [official documentation](https://github.com/pyenv/pyenv#installation). Once installed, make sure to restart your terminal and run:
 
 ```bash
 pyenv install 3.12.3
 pyenv local 3.12.3
 ```
 
-Esto establecerá la versión **Python 3.12.3** a nivel local en este directorio.
+This will set **Python 3.12.3** locally in this directory.
 
-### 2. Instalación de pipx
+### 2. Pipx Installation
 
-Si no tienes **pipx**, instálalo con:
+If you don't have **pipx**, install it with:
 
 ```bash
 python -m pip install --user pipx
 python -m pipx ensurepath
 ```
 
-Luego, reinicia tu terminal para que los cambios en el PATH surtan efecto.
+Then, restart your terminal for the PATH changes to take effect.
 
-### 3. Instalación de uv
+### 3. UV Installation
 
-Para gestionar paquetes, utilizaremos **uv** en lugar de pip. Instálalo usando **pipx**:
+To manage packages, we'll use **uv** instead of pip. Install it using **pipx**:
 
 ```bash
 pipx install uv
 ```
 
-### 4. Instalación de dependencias
+### 4. Dependency Installation
 
-Si ya tienes un archivo `requirements.txt` o `pyproject.toml`, puedes instalar las dependencias con:
+If you already have a `requirements.txt` or `pyproject.toml` file, you can install dependencies with:
 
 ```bash
 uv venv
-uv pip install -r requirements.txt  # Si usas requirements.txt
-uv pip install .  # Si usas pyproject.toml
+uv pip install -r requirements.txt  # If using requirements.txt
+uv pip install .  # If using pyproject.toml
 ```
 
-### 5. Verificación de instalación
+### 5. Installation Verification
 
-Para asegurarte de que todo está correctamente configurado, ejecuta:
+To ensure everything is correctly configured, run:
 
 ```bash
-python --version  # Debería mostrar Python 3.12.3
-uv --version      # Debería mostrar la versión instalada de uv
+python --version  # Should show Python 3.12.3
+uv --version      # Should show the installed uv version
 ```
 
-### 6. Uso de uv
+### 6. UV Usage
 
-Para agregar paquetes nuevos al entorno:
+To add new packages to the environment:
 
 ```bash
-uv pip install nombre-del-paquete
+uv pip install package-name
 ```
 
-Para listar los paquetes instalados:
+To list installed packages:
 
 ```bash
 uv pip list
 ```
 
-Para eliminar un paquete:
+To remove a package:
 
 ```bash
-uv pip uninstall nombre-del-paquete
+uv pip uninstall package-name
 ```
 
-### 7. Actualización del entorno
+### 7. Environment Update
 
-Si deseas actualizar las dependencias a sus versiones más recientes:
+If you want to update dependencies to their latest versions:
 
 ```bash
-uv pip freeze > requirements.txt  # Guarda las versiones actuales
+uv pip freeze > requirements.txt  # Save current versions
 uv pip install -U -r requirements.txt
 ```
 
-### 8. Eliminación del entorno virtual
+### 8. Virtual Environment Removal
 
-Si deseas reiniciar el entorno desde cero:
+If you want to restart the environment from scratch:
 
 ```bash
 uv venv clear
@@ -94,5 +94,4 @@ uv venv clear
 
 ---
 
-Con esta configuración, puedes mantener un entorno limpio y reproducible para tus prácticas en el Máster en Ciberseguridad.
-
+With this configuration, you can maintain a clean and reproducible environment for your practices in the Cybersecurity Master's program.
