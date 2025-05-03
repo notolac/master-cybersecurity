@@ -49,6 +49,12 @@ Thumbs.db
 
 # Logs
 *.log
+logs/
+practicas-malware/logs/
+
+# Reports
+reports/
+practicas-malware/reports/
 
 # CSV y txt
 *.csv
