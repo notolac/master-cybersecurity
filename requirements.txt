@@ -109,3 +109,8 @@ wsproto==1.2.0
 xlsxwriter==3.2.3
 yara-python==4.5.0
 zstandard==0.19.0
+
+# Dependencias adicionales para análisis de archivos .docm
+oletools>=0.60.1
+olefile>=0.46
+python-magic>=0.4.24
