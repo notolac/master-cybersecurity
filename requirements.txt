@@ -1,119 +1,553 @@
-asgiref==3.5.2
-bcrypt==4.3.0
-beautifulsoup4==4.12.3
-brotli==1.0.9
-capstone==5.0.6
-certifi==2025.4.26
-cffi==1.17.1
-charset-normalizer==3.4.1
-click==8.1.7
-click-plugins==1.1.1
-colorama==0.4.6
-colored-traceback==0.4.2
-contourpy==1.3.2
-cryptography==38.0.4
-cycler==0.12.1
-dnspython==2.6.1
-dsinternals==1.2.4
-filelock==3.18.0
-flask==2.2.5
-fonttools==4.57.0
-fpdf==1.7.2
-future==1.0.0
-h11==0.14.0
-h2==4.2.0
-hpack==4.1.0
-hyperframe==6.1.0
-idna==3.10
-impacket==0.11.0
-intervaltree==3.1.0
-ipaddress==1.0.23
-itsdangerous==2.2.0
-jinja2==3.1.4
-joblib==1.4.2
-kaitaistruct==0.10
-kiwisolver==1.4.8
-ldap3==2.9.1
-ldapdomaindump==0.10.0
-lxml==5.2.1
-mako==1.3.10
-markdown==3.5.1
-markdown-it-py==3.0.0
-markupsafe==2.1.5
-matplotlib==3.8.3
-mdurl==0.1.2
-mitmproxy==9.0.1
-mitmproxy-wireguard==0.1.23
-msgpack==1.0.8
-numpy==1.26.4
-packaging==25.0
-pandas==2.2.1
-paramiko==3.5.1
-passlib==1.7.4
-pdfminer-six==20231228
-pefile==2024.8.26
-pillow==11.2.1
-pip==25.1
-plumbum==1.9.0
-prettyconf==2.2.1
-protobuf==4.25.7
-psutil==7.0.0
-publicsuffix2==2.20191221
-pwn==1.0
-pwntools==4.14.1
-pyasn1==0.6.1
-pycparser==2.22
-pycryptodome==3.20.0
-pycryptodomex==3.22.0
-pyelftools==0.32
-pygments==2.18.0
-pynacl==1.5.0
-pyopenssl==22.1.0
-pyparsing==3.0.9
-pyperclip==1.8.2
-pyserial==3.5
-pysocks==1.7.1
-python-dateutil==2.9.0.post0
-python-nmap==0.7.1
-pytz==2025.2
-requests==2.32.3
-requests-file==2.1.0
-rich==13.7.1
-ropgadget==7.6
-rpyc==6.0.2
-ruamel-yaml==0.17.40
-ruamel-yaml-clib==0.2.12
-scapy==2.5.0
-scikit-learn==1.3.2
-scipy==1.15.2
-seaborn==0.13.2
-setuptools==69.5.1
-shellingham==1.5.4
-shodan==1.30.0
-six==1.17.0
-sortedcontainers==2.4.0
-soupsieve==2.7
-threadpoolctl==3.6.0
-tldextract==5.3.0
-tornado==6.4.2
-typer==0.12.3
-typing-extensions==4.11.0
-tzdata==2025.2
-unicorn==2.1.2
-unix-ar==0.2.1
-urllib3==2.4.0
-urwid==2.1.2
-volatility3 @ git+https://github.com/volatilityfoundation/volatility3.git@51f0a3081d5fad41efb1c09d960fe6e374ab4b2d
-werkzeug==3.1.3
-wsproto==1.2.0
-xlsxwriter==3.2.3
-yara-python==4.5.0
-zstandard==0.19.0
+# ============================================================================
+# DEPENDENCIAS DEL MÁSTER EN CIBERSEGURIDAD
+# ============================================================================
+# Python 3.13 compatible - Versiones actualizadas y probadas
+# Todas las librerías han sido actualizadas para compatibilidad con Python 3.13
+# ============================================================================
 
-# Dependencias adicionales para análisis de archivos .docm
+# ============================================================================
+# HERRAMIENTAS DE HACKING ÉTICO Y EXPLOTACIÓN
+# ============================================================================
+
+# pwntools - Framework completo para CTF y explotación de binarios
+# Incluye herramientas para shellcode, ROP, format strings, etc.
+pwntools>=4.15.0
+
+# pwn - Dependencia auxiliar de pwntools
+pwn==1.0
+
+# impacket - Suite de protocolos de red para pentesting
+# Implementa SMB, MSRPC, NetBIOS, Kerberos, LDAP y más
+# Esencial para pruebas de Active Directory y redes Windows
+impacket>=0.12.0
+
+# scapy - Biblioteca de manipulación de paquetes de red
+# Permite crear, enviar, capturar y analizar paquetes de red
+# Útil para auditorías de red y análisis de protocolos
+scapy>=2.5.0
+
+# python-nmap - Interfaz Python para Nmap
+# Permite ejecutar escaneos de red y parsear resultados
+python-nmap==0.7.1
+
+# shodan - API para el motor de búsqueda Shodan
+# Busca dispositivos conectados a Internet, vulnerabilidades, etc.
+shodan>=1.31.0
+
+# paramiko - Implementación completa de SSHv2
+# Permite conexiones SSH, SFTP y ejecución remota de comandos
+paramiko>=3.5.1
+
+# ropgadget - Herramienta para encontrar gadgets ROP en ejecutables
+# Esencial para explotación de binarios y bypass de protecciones
+ropgadget==7.6
+
+# ============================================================================
+# ANÁLISIS DE MALWARE Y FORENSE DIGITAL
+# ============================================================================
+
+# volatility3 - Framework líder en análisis forense de memoria RAM
+# Extrae procesos, conexiones de red, claves de registro, contraseñas, etc.
+# Compatible con múltiples sistemas operativos y versiones
+volatility3>=2.7
+
+# yara-python - Motor de detección de patrones en malware
+# Permite crear reglas para identificar y clasificar malware
+# Nota: Puede requerir herramientas de compilación del sistema operativo
+yara-python>=4.5.0
+
+# pefile - Análisis profundo de archivos PE (ejecutables Windows)
+# Extrae información de headers, secciones, importaciones, recursos, etc.
+pefile>=2024.8.26
+
+# capstone - Desensamblador multi-arquitectura
+# Soporta x86, ARM, MIPS, PowerPC, SPARC, SystemZ, XCore, M68K, TMS320C64x
+capstone==5.0.6
+
+# unicorn - Emulador de CPU multi-arquitectura basado en QEMU
+# Permite ejecutar código en múltiples arquitecturas de forma controlada
+unicorn==2.1.2
+
+# pyelftools - Análisis de archivos ELF (ejecutables Linux/Unix)
+# Parsea y analiza headers, secciones, símbolos, etc.
+pyelftools==0.32
+
+# oletools - Suite de análisis de archivos Microsoft Office
+# Detecta macros maliciosas, VBA ofuscado, exploits, etc.
 oletools>=0.60.1
+
+# olefile - Parser de archivos OLE (Office Legacy)
+# Analiza estructura interna de archivos DOC, XLS, PPT antiguos
 olefile>=0.46
+
+# python-magic - Identificación de tipos de archivo mediante libmagic
+# Detecta el tipo real de archivo independientemente de la extensión
 python-magic>=0.4.24
 
-# ethicalhacking
-locust==2.39.1
+# pdfminer-six - Extracción de texto y metadata de archivos PDF
+# Útil para analizar PDFs maliciosos y extraer contenido oculto
+pdfminer-six>=20240706
+
+# ============================================================================
+# CRIPTOGRAFÍA Y SEGURIDAD
+# ============================================================================
+
+# cryptography - Biblioteca criptográfica moderna y completa
+# Proporciona primitivas criptográficas de alto y bajo nivel
+# Incluye soporte para TLS, certificados X.509, firmas digitales, etc.
+cryptography>=46.0.3
+
+# pycryptodome - Suite criptográfica auto-contenida
+# Fork mejorado de PyCrypto con AES, RSA, DSA, ECC, etc.
+pycryptodome>=3.20.0
+
+# pycryptodomex - Versión independiente de pycryptodome
+# Se puede instalar junto a pycryptodome sin conflictos
+pycryptodomex>=3.22.0
+
+# bcrypt - Función de hash adaptativa para contraseñas
+# Basada en el cifrado Blowfish, resistente a ataques de fuerza bruta
+bcrypt>=4.3.0
+
+# passlib - Framework de hashing de contraseñas
+# Soporta múltiples esquemas: bcrypt, argon2, scrypt, PBKDF2, etc.
+passlib>=1.7.4
+
+# pynacl - Binding de Python para libsodium
+# Criptografía moderna de curva elíptica (NaCl/libsodium)
+pynacl>=1.5.0
+
+# pyopenssl - Wrapper Python para OpenSSL
+# Acceso a funcionalidades SSL/TLS y certificados digitales
+pyopenssl>=24.2.1
+
+# ============================================================================
+# ANÁLISIS DE REDES Y PROTOCOLOS
+# ============================================================================
+
+# mitmproxy - Proxy HTTPS interactivo para inspección de tráfico
+# Permite interceptar, modificar y analizar tráfico HTTP/HTTPS
+# Incluye mitmproxy (CLI), mitmweb (interfaz web) y mitmdump (tcpdump-like)
+mitmproxy>=12.2.0
+
+# mitmproxy-wireguard - Soporte WireGuard para mitmproxy
+# Permite usar WireGuard como modo de transparencia
+mitmproxy-wireguard==0.1.23
+
+# dnspython - Kit completo de herramientas DNS
+# Consultas DNS, resolución, transferencias de zona, DNSSEC, etc.
+dnspython==2.6.1
+
+# h2 - Implementación pura de HTTP/2
+# Cliente y servidor HTTP/2 completo en Python
+h2==4.3.0
+
+# h11 - Parser de estado HTTP/1.1
+# Implementación de bajo nivel del protocolo HTTP/1.1
+h11==0.16.0
+
+# hpack - Compresión de cabeceras HTTP/2
+# Implementa el algoritmo HPACK para HTTP/2
+hpack==4.1.0
+
+# hyperframe - Codificación y decodificación de frames HTTP/2
+# Manejo de frames HTTP/2 de bajo nivel
+hyperframe==6.1.0
+
+# wsproto - Implementación pura de WebSocket
+# Cliente y servidor WebSocket compatible con asyncio
+wsproto==1.2.0
+
+# ============================================================================
+# ANÁLISIS DE ACTIVE DIRECTORY Y LDAP
+# ============================================================================
+
+# ldap3 - Cliente LDAP completo en Python puro
+# Implementa LDAPv3, compatible con AD, OpenLDAP, etc.
+# No requiere dependencias C (como python-ldap)
+ldap3==2.9.1
+
+# ldapdomaindump - Volcado de información de dominios AD via LDAP
+# Extrae usuarios, grupos, equipos, políticas, confianzas, etc.
+ldapdomaindump==0.10.0
+
+# dsinternals - Manipulación de estructuras internas de Active Directory
+# Permite leer y manipular bases de datos NTDS.dit
+dsinternals==1.2.4
+
+# ============================================================================
+# DESARROLLO WEB Y APIs
+# ============================================================================
+
+# Flask - Microframework web minimalista y flexible
+# Ideal para crear APIs REST, aplicaciones web ligeras y prototipos
+Flask>=3.0.3
+
+# Werkzeug - Biblioteca WSGI de utilidades para aplicaciones web
+# Motor de Flask, incluye servidor de desarrollo, routing, etc.
+Werkzeug>=3.1.3
+
+# Jinja2 - Motor de plantillas moderno y diseñado para Python
+# Usado por Flask para renderizar HTML con sintaxis tipo Django
+Jinja2>=3.1.4
+
+# itsdangerous - Firmado criptográfico de datos
+# Usado por Flask para sesiones seguras y tokens CSRF
+itsdangerous>=2.2.0
+
+# requests - Biblioteca HTTP para humanos
+# API elegante y simple para hacer peticiones HTTP/HTTPS
+requests>=2.32.3
+
+# requests-file - Transportador de esquema file:// para requests
+# Permite usar requests con URLs locales (file://)
+requests-file==2.1.0
+
+# urllib3 - Cliente HTTP con pool de conexiones
+# Base de requests, maneja conexiones, reintentos, SSL, etc.
+urllib3>=2.2.0
+
+# certifi - Certificados raíz de Mozilla
+# Paquete de certificados SSL/TLS para validación HTTPS
+certifi>=2025.4.26
+
+# ============================================================================
+# TESTING DE CARGA Y RENDIMIENTO
+# ============================================================================
+
+# locust - Framework de pruebas de carga distribuido
+# Permite simular miles de usuarios concurrentes
+# Define comportamientos en Python puro, interfaz web en tiempo real
+locust>=2.39.1
+
+# ============================================================================
+# ANÁLISIS DE DATOS, MACHINE LEARNING Y VISUALIZACIÓN
+# ============================================================================
+
+# numpy - Computación numérica con arrays multidimensionales
+# Base de la pila científica de Python
+# Álgebra lineal, transformadas de Fourier, generación de números aleatorios
+numpy>=2.3.0
+
+# pandas - Estructuras de datos y análisis de datos
+# DataFrames y Series para manipulación de datos tabulares
+# Lectura/escritura de CSV, Excel, SQL, JSON, etc.
+pandas>=2.3.3
+
+# scipy - Algoritmos científicos y matemáticos
+# Optimización, integración, interpolación, procesamiento de señales, estadística
+scipy>=1.16.3
+
+# matplotlib - Biblioteca de visualización 2D/3D
+# Gráficos de líneas, barras, scatter, histogramas, heatmaps, etc.
+# Altamente personalizable, publicación de calidad
+matplotlib>=3.10.5
+
+# seaborn - Visualización de datos estadísticos
+# Built on matplotlib, estilos hermosos por defecto
+# Gráficos estadísticos: distribuciones, regresiones, matrices, etc.
+seaborn>=0.13.2
+
+# scikit-learn - Machine learning y minería de datos
+# Clasificación, regresión, clustering, reducción de dimensionalidad
+# Incluye algoritmos: SVM, Random Forest, KMeans, PCA, etc.
+scikit-learn>=1.7.2
+
+# joblib - Paralelización y persistencia de objetos
+# Usado por scikit-learn para procesamiento paralelo
+joblib>=1.4.2
+
+# threadpoolctl - Control de pools de hilos en librerías nativas
+# Limita threads en OpenBLAS, MKL, BLAS para evitar oversubscription
+threadpoolctl>=3.6.0
+
+# ============================================================================
+# PARSING Y WEB SCRAPING
+# ============================================================================
+
+# beautifulsoup4 - Extracción de datos de HTML y XML
+# API simple para navegar, buscar y modificar el árbol de parseo
+# Soporta múltiples parsers: html.parser, lxml, html5lib
+beautifulsoup4==4.12.3
+
+# lxml - Procesamiento de XML y HTML muy rápido
+# Binding de libxml2 y libxslt, XPath, XSLT
+lxml>=6.0.1
+
+# soupsieve - Implementación de selectores CSS para Beautiful Soup
+# Permite búsquedas complejas con sintaxis CSS
+soupsieve==2.7
+
+# ============================================================================
+# PROCESAMIENTO DE ARCHIVOS Y FORMATOS
+# ============================================================================
+
+# xlsxwriter - Creación de archivos Excel XLSX
+# Escribe archivos Excel con formato: colores, gráficos, fórmulas, etc.
+xlsxwriter>=3.2.9
+
+# fpdf - Generación de archivos PDF
+# Creación simple de PDFs con texto, imágenes y tablas
+fpdf==1.7.2
+
+# pillow - Procesamiento de imágenes
+# Fork de PIL: lectura, manipulación y guardado de imágenes
+# Soporta PNG, JPEG, GIF, BMP, TIFF, etc.
+pillow>=11.2.1
+
+# kaitaistruct - Parseo declarativo de estructuras binarias
+# Define formatos binarios con especificaciones .ksy
+kaitaistruct==0.10
+
+# unix-ar - Lectura y escritura de archivos AR de Unix
+# Formato de archivo usado por librerías estáticas (.a)
+unix-ar==0.2.1
+
+# ============================================================================
+# SERIALIZACIÓN Y COMPRESIÓN
+# ============================================================================
+
+# protobuf - Protocol Buffers de Google
+# Serialización eficiente de datos estructurados
+# Usado en gRPC, TensorFlow, etc.
+protobuf>=4.25.7
+
+# msgpack - Serialización binaria tipo JSON pero más rápido
+# Formato compacto y eficiente para transmisión de datos
+msgpack>=1.0.8
+
+# brotli - Algoritmo de compresión Brotli
+# Compresor de Google, mejor ratio que gzip
+brotli>=1.0.9
+
+# zstandard - Compresión Zstandard (zstd) de Facebook
+# Velocidad de compresión/descompresión muy alta
+zstandard>=0.22.0
+
+# ============================================================================
+# YAML Y CONFIGURACIÓN
+# ============================================================================
+
+# ruamel-yaml - Parser YAML que preserva comentarios y formato
+# Alternativa a PyYAML con mejor manejo de YAML 1.2
+ruamel-yaml>=0.17.40
+
+# ruamel-yaml-clib - Acelerador en C para ruamel.yaml
+# Mejora el rendimiento del parser YAML
+ruamel-yaml-clib>=0.2.12
+
+# prettyconf - Gestión de configuración desde múltiples fuentes
+# Lee configuración de archivos .env, variables de entorno, archivos ini, etc.
+prettyconf==2.2.1
+
+# ============================================================================
+# INTERFAZ DE LÍNEA DE COMANDOS Y TERMINAL
+# ============================================================================
+
+# click - Framework para crear CLIs
+# Decoradores simples para comandos, opciones, argumentos
+# Usado por Flask, Black, pip, etc.
+click>=8.1.7
+
+# click-plugins - Sistema de plugins para Click
+# Permite extender aplicaciones Click con plugins
+click-plugins==1.1.1
+
+# typer - CLIs modernas usando type hints
+# Built on Click, usa anotaciones de tipo para definir comandos
+typer>=0.12.3
+
+# rich - Salida rica y bonita para terminal
+# Tablas, sintaxis resaltada, barras de progreso, markdown, etc.
+rich>=13.7.1
+
+# colorama - Texto coloreado en terminal multiplataforma
+# Hace que códigos ANSI funcionen en Windows
+colorama==0.4.6
+
+# colored-traceback - Tracebacks coloreados para debugging
+# Mejora la legibilidad de los stack traces
+colored-traceback==0.4.2
+
+# pygments - Resaltado de sintaxis genérico
+# Soporta 500+ lenguajes, múltiples formatos de salida
+pygments>=2.18.0
+
+# urwid - Framework para interfaces de texto en consola
+# Widgets, layouts, manejo de eventos para TUIs complejas
+urwid>=2.6.15
+
+# shellingham - Detección del shell actual
+# Identifica bash, zsh, fish, tcsh, etc.
+shellingham==1.5.4
+
+# ============================================================================
+# UTILIDADES DE SISTEMA
+# ============================================================================
+
+# psutil - Información y gestión de procesos del sistema
+# CPU, memoria, discos, red, sensores, procesos, usuarios
+# Multiplataforma: Linux, Windows, macOS, BSD, Solaris
+psutil>=7.1.2
+
+# plumbum - Programación de shell con sintaxis Pythónica
+# Ejecuta comandos, pipes, redirecciones de forma elegante
+plumbum==1.9.0
+
+# pyperclip - Operaciones de portapapeles multiplataforma
+# Copiar y pegar texto desde Python
+pyperclip>=1.9.0
+
+# pyserial - Comunicación por puerto serie
+# Acceso a puertos COM/TTY para Arduino, modems, etc.
+pyserial==3.5
+
+# ============================================================================
+# DEPENDENCIAS DE GRÁFICOS Y VISUALIZACIÓN
+# ============================================================================
+
+# contourpy - Cálculo de líneas de contorno 2D
+# Usado por matplotlib para gráficos de contorno
+contourpy>=1.3.2
+
+# cycler - Composición de iteradores de estilos
+# Usado por matplotlib para ciclos de colores, estilos de línea, etc.
+cycler==0.12.1
+
+# fonttools - Manipulación de fuentes tipográficas
+# Conversión entre formatos, subsetting, etc.
+fonttools>=4.57.0
+
+# kiwisolver - Solucionador de restricciones Cassowary
+# Usado por matplotlib para layout constraints
+kiwisolver>=1.4.8
+
+# ============================================================================
+# UTILIDADES DE RED Y DOMINIOS
+# ============================================================================
+
+# tldextract - Extracción inteligente de subdominios, dominio y TLD
+# Separa example.co.uk en 'example' + 'co.uk'
+tldextract==5.3.0
+
+# publicsuffix2 - Lista de sufijos públicos actualizada
+# Identifica .com, .co.uk, .github.io, etc.
+publicsuffix2==2.20191221
+
+# idna - Soporte para Nombres de Dominio Internacionalizados
+# Codificación y decodificación de dominios con caracteres no-ASCII
+idna==3.10
+
+# pysocks - Cliente SOCKS para Python
+# Soporte para proxies SOCKS4, SOCKS5, HTTP
+pysocks==1.7.1
+
+# ============================================================================
+# COMUNICACIÓN REMOTA Y RPC
+# ============================================================================
+
+# rpyc - Remote Python Call
+# RPC transparente y simétrico entre procesos Python
+rpyc==6.0.2
+
+# tornado - Framework web asíncrono y librería de networking
+# Servidor web no bloqueante, WebSockets, coroutines
+tornado>=6.4.2
+
+# ============================================================================
+# MARKDOWN Y DOCUMENTACIÓN
+# ============================================================================
+
+# markdown - Procesador de Markdown en Python
+# Convierte Markdown a HTML con extensiones
+markdown>=3.5.1
+
+# markdown-it-py - Parser Markdown CommonMark
+# Implementación de markdown-it en Python
+markdown-it-py==3.0.0
+
+# mdurl - Parser de URLs para markdown-it
+# Validación y parsing de URLs en Markdown
+mdurl==0.1.2
+
+# mako - Motor de plantillas rápido
+# Sintaxis tipo Python en plantillas
+mako==1.3.10
+
+# ============================================================================
+# ESTRUCTURAS DE DATOS Y UTILIDADES
+# ============================================================================
+
+# intervaltree - Árbol de intervalos
+# Búsqueda eficiente de intervalos solapados
+intervaltree==3.1.0
+
+# sortedcontainers - Contenedores ordenados en Python puro
+# SortedList, SortedDict, SortedSet con rendimiento comparable a C
+sortedcontainers==2.4.0
+
+# ============================================================================
+# COMPATIBILIDAD Y UTILIDADES BÁSICAS
+# ============================================================================
+
+# typing-extensions - Backport de nuevas características de typing
+# Tipos como Literal, Protocol, TypedDict para versiones antiguas
+typing-extensions>=4.11.0
+
+# python-dateutil - Extensiones para datetime
+# Parsing flexible de fechas, zonas horarias, deltas relativos
+python-dateutil==2.9.0.post0
+
+# ============================================================================
+# DEPENDENCIAS DE BAJO NIVEL
+# ============================================================================
+
+# cffi - C Foreign Function Interface
+# Llamar código C desde Python de forma simple
+cffi>=1.17.1
+
+# pycparser - Parser de C en Python puro
+# Usado por cffi para parsear headers de C
+pycparser==2.22
+
+# pyasn1 - Implementación de ASN.1
+# Codificación/decodificación de estructuras ASN.1
+# Usado en criptografía y protocolos de red
+pyasn1==0.6.1
+
+# charset-normalizer - Detección de encoding de caracteres
+# Alternativa moderna a chardet
+charset-normalizer==3.4.1
+
+# markupsafe - Escape seguro de strings para HTML/XML
+# Usado por Jinja2 para prevenir XSS
+markupsafe>=2.1.5
+
+# filelock - Bloqueo de archivos multiplataforma
+# Sincronización entre procesos mediante archivos lock
+filelock>=3.18.0
+
+# packaging - Parsing de versiones y especificadores
+# Usado por pip y setuptools
+packaging>=25.0
+
+# ============================================================================
+# HERRAMIENTAS DE GESTIÓN DE PAQUETES
+# ============================================================================
+
+# setuptools - Construcción y distribución de paquetes Python
+# Extiende distutils con funcionalidades adicionales
+setuptools>=69.5.1
+
+# pip - Instalador de paquetes de Python
+# Gestor de paquetes oficial de Python
+pip>=25.1
+
+# ============================================================================
+# COMPATIBILIDAD WEB ASÍNCRONA
+# ============================================================================
+
+# asgiref - Especificación de referencia ASGI
+# Servidor de Gateway de Interfaz Asíncrona
+# Usado por Django Channels, FastAPI, Starlette
+asgiref>=3.8.1
