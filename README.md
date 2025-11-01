@@ -1,109 +1,136 @@
-# Cybersecurity Master
+# Máster en Ciberseguridad
 
-This repository contains materials and practices for the Cybersecurity Master's program.
+Este repositorio contiene materiales y prácticas para el programa del Máster en Ciberseguridad.
 
-## Environment Setup
+## Configuración del Entorno
 
-To ensure correct code execution, it is recommended to set up the development environment using **Python 3.12.3** and manage dependencies with **uv**.
+Para asegurar la correcta ejecución del código, se recomienda configurar el entorno de desarrollo usando **Python 3.13** y gestionar las dependencias con **uv**.
 
-### 1. UV Installation
+### 1. Instalación de UV
 
-To manage packages and Python versions, we'll use **uv**. Install it using **pipx**:
+Para gestionar paquetes y versiones de Python, utilizaremos **uv**. 
 
-First, install **pipx** if you don't have it:
+**Importante**: Las instrucciones de instalación varían según el sistema operativo y arquitectura. Por favor, consulta la documentación oficial para obtener instrucciones específicas para tu sistema:
 
+- **Documentación oficial**: https://docs.astral.sh/uv/
+- **Repositorio oficial**: https://github.com/astral-sh/uv
+
+**Instalación según tu sistema**:
+
+**macOS (usando Homebrew)**:
 ```bash
-python -m pip install --user pipx
-python -m pipx ensurepath
+brew install uv
 ```
 
-Then, restart your terminal for the PATH changes to take effect.
+**Linux**:
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
-Now install **uv**:
+**Windows**:
+```powershell
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
+```
 
+**Si ya tienes pipx instalado** (cualquier sistema operativo):
 ```bash
 pipx install uv
 ```
 
-### 2. Environment Creation and Activation
+Después de la instalación, reinicia tu terminal para que los cambios en el PATH surtan efecto.
 
-Create a virtual environment with the Python version specified in `pyproject.toml`:
+### 2. Creación del Entorno Virtual
 
-```bash
-uv venv
-```
-
-**Important**: After creating the virtual environment, you need to activate it:
+Crea un entorno virtual con Python 3.13:
 
 ```bash
-source .venv/bin/activate  # On Linux/macOS
-# or
-.venv\Scripts\activate     # On Windows
+uv venv --python 3.13
 ```
 
-### 3. Dependency Installation
+**Nota**: Si no tienes Python 3.13 instalado, uv lo descargará e instalará automáticamente.
 
-Install the project dependencies:
+### 3. Activación del Entorno Virtual
+
+**Importante**: Después de crear el entorno virtual, necesitas activarlo:
 
 ```bash
-uv pip install -r requirements.txt  # If using requirements.txt
-uv pip install -e .  # Install the project in editable mode
+source .venv/bin/activate  # En Linux/macOS
 ```
 
-### 4. Installation Verification
-
-To ensure everything is correctly configured, run:
+o
 
 ```bash
-python --version  # Should show Python 3.12.3
-uv --version      # Should show the installed uv version
+.venv\Scripts\activate     # En Windows
 ```
 
-### 5. UV Usage
+### 4. Instalación de Dependencias
 
-To add new packages to the environment:
+Instala las dependencias del proyecto:
 
 ```bash
-uv pip install package-name
+uv pip install -r requirements.txt
 ```
 
-To list installed packages:
+### 5. Verificación de la Instalación
+
+Para asegurar que todo está correctamente configurado, ejecuta:
+
+```bash
+python --version  # Debería mostrar Python 3.13.x
+uv --version      # Debería mostrar la versión instalada de uv
+```
+
+### 6. Uso de UV
+
+**Añadir nuevos paquetes al entorno**:
+
+```bash
+uv pip install nombre-paquete
+```
+
+**Listar paquetes instalados**:
 
 ```bash
 uv pip list
 ```
 
-To remove a package:
+**Eliminar un paquete**:
 
 ```bash
-uv pip uninstall package-name
+uv pip uninstall nombre-paquete
 ```
 
-### 6. Environment Update
+### 7. Actualización del Entorno
 
-If you want to update dependencies to their latest versions:
+Si deseas actualizar las dependencias a sus últimas versiones:
 
 ```bash
-uv pip freeze > requirements.txt  # Save current versions
+uv pip freeze > requirements.txt  # Guardar versiones actuales
 uv pip install -U -r requirements.txt
 ```
 
-### 7. Virtual Environment Removal
+### 8. Eliminación del Entorno Virtual
 
-If you want to restart the environment from scratch:
+Si deseas reiniciar el entorno desde cero:
 
 ```bash
-uv venv clear
+rm -rf .venv  # En Linux/macOS
 ```
 
-### 8. Deactivating the Environment
+o
 
-When you're done working, you can deactivate the virtual environment:
+```bash
+rmdir /s .venv  # En Windows
+```
+
+Luego vuelve a crear el entorno con el paso 2.
+
+### 9. Desactivar el Entorno
+
+Cuando termines de trabajar, puedes desactivar el entorno virtual:
 
 ```bash
 deactivate
 ```
 
 ---
-
-With this configuration, you can maintain a clean and reproducible environment for your practices in the Cybersecurity Master's program. The `uv` tool will automatically handle the Python version specified in `pyproject.toml`, making the setup process much simpler.
