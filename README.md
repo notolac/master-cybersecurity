@@ -4,7 +4,8 @@ Este repositorio contiene materiales y prácticas para el programa del Máster e
 
 ## Configuración del Entorno
 
-Para asegurar la correcta ejecución del código, se recomienda configurar el entorno de desarrollo usando **Python 3.13** y gestionar las dependencias con **uv**.
+Para asegurar la correcta ejecución del código, se recomienda configurar el entorno de desarrollo usando **Python 3.14** y gestionar las dependencias con **uv**.
+Las dependencias de `requirements.txt` han sido actualizadas y son compatibles con Python 3.14.
 
 ### 1. Instalación de UV
 
@@ -41,13 +42,13 @@ Después de la instalación, reinicia tu terminal para que los cambios en el PAT
 
 ### 2. Creación del Entorno Virtual
 
-Crea un entorno virtual con Python 3.13:
+Crea un entorno virtual con Python 3.14:
 
 ```bash
-uv venv --python 3.13
+uv venv --python 3.14
 ```
 
-**Nota**: Si no tienes Python 3.13 instalado, uv lo descargará e instalará automáticamente.
+**Nota**: Si no tienes Python 3.14 instalado, uv lo descargará e instalará automáticamente.
 
 ### 3. Activación del Entorno Virtual
 
@@ -76,7 +77,7 @@ uv pip install -r requirements.txt
 Para asegurar que todo está correctamente configurado, ejecuta:
 
 ```bash
-python --version  # Debería mostrar Python 3.13.x
+python --version  # Debería mostrar Python 3.14.x
 uv --version      # Debería mostrar la versión instalada de uv
 ```
 
