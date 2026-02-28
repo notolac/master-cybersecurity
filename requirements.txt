@@ -1,8 +1,8 @@
 # ============================================================================
 # DEPENDENCIAS DEL MÁSTER EN CIBERSEGURIDAD
 # ============================================================================
-# Python 3.13 compatible - Versiones actualizadas y probadas
-# Todas las librerías han sido actualizadas para compatibilidad con Python 3.13
+# Python 3.14 compatible - Versiones actualizadas y probadas
+# Todas las librerías han sido actualizadas para compatibilidad con Python 3.14
 # ============================================================================
 
 # ============================================================================
@@ -12,9 +12,6 @@
 # pwntools - Framework completo para CTF y explotación de binarios
 # Incluye herramientas para shellcode, ROP, format strings, etc.
 pwntools>=4.15.0
-
-# pwn - Dependencia auxiliar de pwntools
-pwn==1.0
 
 # impacket - Suite de protocolos de red para pentesting
 # Implementa SMB, MSRPC, NetBIOS, Kerberos, LDAP y más
@@ -66,7 +63,8 @@ capstone==5.0.6
 
 # unicorn - Emulador de CPU multi-arquitectura basado en QEMU
 # Permite ejecutar código en múltiples arquitecturas de forma controlada
-unicorn==2.1.2
+# Nota: fijado a 2.1.1 para usar wheel precompilado en Python 3.14 (evita build local)
+unicorn==2.1.1
 
 # pyelftools - Análisis de archivos ELF (ejecutables Linux/Unix)
 # Parsea y analiza headers, secciones, símbolos, etc.
@@ -538,6 +536,10 @@ packaging>=25.0
 # setuptools - Construcción y distribución de paquetes Python
 # Extiende distutils con funcionalidades adicionales
 setuptools>=69.5.1
+
+# cmake - Sistema de build requerido por algunos paquetes con extensiones C/C++
+# Necesario para compilar unicorn cuando no hay wheel precompilado disponible
+cmake>=3.30.0
 
 # pip - Instalador de paquetes de Python
 # Gestor de paquetes oficial de Python
