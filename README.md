@@ -135,3 +135,7 @@ deactivate
 ```
 
 ---
+
+## Seguridad de GitHub
+
+[Controles, motivo, verificación y reversión](docs/github-hardening.md).
